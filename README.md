@@ -38,7 +38,7 @@ In this part of the workshop we are going to analyze, using ESDA (Exploratory Sp
 
 To analyze the data we are going to use the [pysal](https://pysal.readthedocs.org/en/latest/) analysis library, which is the Python equivalent of the OpenGeoda software.
 
-As you know, [Moran's Index](http://en.wikipedia.org/wiki/Moran%27s_I) measures the spatial autocorrelation of spatial distributions. Let's use this measure to analyze the results of the model, let's start with random diffusion: 
+As you know, [Moran's Index](http://en.wikipedia.org/wiki/Moran%27s_I) measures the spatial autocorrelation of spatial distributions. Let's use this measure to analyze the results of the model, let's start with random diffusion:
 
 ```
 1+1
