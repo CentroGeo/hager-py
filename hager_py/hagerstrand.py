@@ -64,7 +64,7 @@ class Diffusion(object):
         self._infected_pop = []
         self._tmp_adopted = []
         self._pop_array = np.zeros((len(np.ravel(self.space)),self._pob),
-                                    dtype=np.bool)
+                                    dtype=bool)
         self.time_series = []
         for c in self._initial_diff:
             self.space[c[0],c[1]] = 1
@@ -88,8 +88,8 @@ class SimpleDiffusion(Diffusion):
     :param initial_diff: [(int,int)] Coordinate list of start diffusers.
     :param p0: float Probability of self-diffusion.
     :param max_iter: int Maximum number of iterations.
-    :attribute space: np.array(M,N,dtype=np.int8) Available space.
-    :attribute _pop_array: np.array(M*N,pob,dtype=np.bool) array of population in each cell
+    :attribute space: np.array(M,N,dtype=int) Available space.
+    :attribute _pop_array: np.array(M*N,pob,dtype=bool) array of population in each cell
     :attribute _infected_pop: list (space_idx,int) List of the adopting cell indices.
                                                 The first entry is the flattened index of the cell
                                                 in the space array and the second is the number of
@@ -108,10 +108,10 @@ class SimpleDiffusion(Diffusion):
         #             p0, max_iter)
         self.M = M
         self.N = N
-        self.space = np.zeros((self.N,self.M),dtype=np.int8)
+        self.space = np.zeros((self.N,self.M),dtype=int)
         self._pop_array = np.zeros((len(np.ravel(self.space)),pob),
-                                    dtype=np.bool)
-        self.result = np.zeros((M,N,max_iter),dtype=np.int8)
+                                    dtype=bool)
+        self.result = np.zeros((M,N,max_iter),dtype=int)
         for c in initial_diff:
             if c[0] > M or c[1] > N:
                 raise ValueError("The coordinates on the starting difusors do not belong to the space")
@@ -312,8 +312,8 @@ class AdvancedDiffusion(Diffusion):
     :param initial_diff: [(int,int)] Coordinate list of start diffusers
     :param p0: float Auto-difussion probability
     :param max_iter: int Maximum number of iterations
-    :attribute space: np.array(N,N,dtype=np.int8) Available space
-    :attribute _pop_array: np.array(N*N,pob,dtype=np.bool) array of inhabitants in each cell
+    :attribute space: np.array(N,N,dtype=int) Available space
+    :attribute _pop_array: np.array(N*N,pob,dtype=bool) array of inhabitants in each cell
     :attribute _infected_pop: list (space_idx,int) List of adoptive cell indices.
                                 The first entry is the flattened index of the cell in the space matrix
                                 and the second is the number of the settler in pop_array. That is,
@@ -330,16 +330,16 @@ class AdvancedDiffusion(Diffusion):
         self.N = N
         self.density = density
         self.amplitud = amplitud
-        self.space = np.zeros((self.N,self.N),dtype=np.int8)
+        self.space = np.zeros((self.N,self.N),dtype=int)
         points = self.N * np.random.random((2, self.density ** 2))
-        self.space[(points[0]).astype(np.int), (points[1]).astype(np.int)] = 1
+        self.space[(points[0]).astype(int), (points[1]).astype(int)] = 1
         self.space = filters.gaussian(self.space, sigma= self.N / (self.amplitud * self.density))
         # We rescale to the value of the maximum pop and convert to integer:
         self.space *= self._pob / self.space.max()
-        self.space = self.space.astype(np.int8)
+        self.space = self.space.astype(int)
         self._pop_array = np.zeros((len(np.ravel(self.space)),self._pob),
-                                    dtype=np.bool)
-        self.result = np.zeros((self.N,self.N,max_iter),dtype=np.int8)
+                                    dtype=bool)
+        self.result = np.zeros((self.N,self.N,max_iter),dtype=int)
         for c in initial_diff:
             if c[0] > self.N or c[1] > self.N:
                 raise ValueError("Coordinates of initial diffusers do not fall in space")
