@@ -450,7 +450,7 @@ class AdvancedDiffusion(Diffusion):
     def random_diffusion(self):
         """Propagates randomly in space."""
 
-        #Si ya tenemos resultados hay que limpiar e inicializar
+        #If we already have results, we must clean and initialize
         if self._clean:
             self._clean_adopters()
 
