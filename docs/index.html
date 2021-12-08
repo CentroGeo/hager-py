@@ -44,22 +44,22 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>En este taller vamos a trabajar con una implementaci√≥n en Python del modelo de difusi√≥n espacial de <a href="http://en.wikipedia.org/wiki/Torsten_H%C3%A4gerstrand">Torsten H√§gerstrand</a>. Este modelo es una simulaci√≥n tipo <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> del proceso de difusi√≥n de innovaciones concebido originalmente por Hagerstrand en 1953.
-Para este taller vamos a trabajar con la versi√≥n m√°s simple del modelo, las suposiciones b√°sicas son las siguientes:</p>
+<p>En este taller vamos a trabajar con una implementaciÛn en Python del modelo de difusiÛn espacial de <a href="http://en.wikipedia.org/wiki/Torsten_H%C3%A4gerstrand">Torsten H‰gerstrand</a>. Este modelo es una simulaciÛn tipo <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> del proceso de difusiÛn de innovaciones concebido originalmente por Hagerstrand en 1953.
+Para este taller vamos a trabajar con la versiÛn m·s simple del modelo, las suposiciones b·sicas son las siguientes:</p>
 <ol>
 <li>Una sola persona tiene el <em>mensaje</em> al principio</li>
-<li>La innovaci√≥n es adoptada en cuanto se tiene contacto con ella</li>
+<li>La innovaciÛn es adoptada en cuanto se tiene contacto con ella</li>
 <li>El mensaje se comunica <em>unicamente</em> en encuentros cara a cara</li>
 <li>El mensaje se transmite en intervalos discretos en los que <strong>todos</strong> los adoptantes transmiten el mensaje a otra persona.</li>
-<li>El espacio es homogeneo e isotr√≥pico</li>
+<li>El espacio es homogeneo e isotrÛpico</li>
 </ol>
-<p>En escencia, lo que hacemos es considerar al espacio <em>geogr√°fico</em> como una ret√≠cula en la que cada elemento tiene el mismo n√∫mero de habitantes. A partir de aqu√≠, la probabilidad de que un habitante de una ret√≠cula contacte a otro habitante es funci√≥n √∫nicamente de la distancia.</p>
-<p>La simulaci√≥n Monte Carlo ocurre en dos etapas, para cada portador del mensaje:</p>
+<p>En escencia, lo que hacemos es considerar al espacio <em>geogr·fico</em> como una retÌcula en la que cada elemento tiene el mismo n˙mero de habitantes. A partir de aquÌ, la probabilidad de que un habitante de una retÌcula contacte a otro habitante es funciÛn ˙nicamente de la distancia.</p>
+<p>La simulaciÛn Monte Carlo ocurre en dos etapas, para cada portador del mensaje:</p>
 <ol>
-<li>Se selecciona al azar (de acuerdo a una funci√≥n de probabilidad que decae con la distancia) la celda a la cual se transmite el mensaje.</li>
-<li>Se selecciona otro n√∫mero al azar para elegir el habitante de la celda que recibe el mensaje. Si este habitante es tambi√©n portador de la innovaci√≥n, queda inalterado.</li>
+<li>Se selecciona al azar (de acuerdo a una funciÛn de probabilidad que decae con la distancia) la celda a la cual se transmite el mensaje.</li>
+<li>Se selecciona otro n˙mero al azar para elegir el habitante de la celda que recibe el mensaje. Si este habitante es tambiÈn portador de la innovaciÛn, queda inalterado.</li>
 </ol>
-<p>Vamos ahora a jugar un poco con la implementaci√≥n del modelo de Hagerstrand que est√° en esta misma carpeta.</p>
+<p>Vamos ahora a jugar un poco con la implementaciÛn del modelo de Hagerstrand que est· en esta misma carpeta.</p>
 
 </div>
 </div>
@@ -86,6 +86,15 @@ Para este taller vamos a trabajar con la versi√≥n m√°s simple del modelo, las su
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Fill me in please! Don't forget code examples:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-analysis">Data analysis<a class="anchor-link" href="#Data-analysis"> </a></h2><p>In this part of the workshop we are going to analyze, using ESDA (Exploratory Spatial Data Analysis) tools, the data generated with the Hagerstrand model. The goal is to begin to understand the relationship between spatial statistics and the processes that give rise to the distributions that we observe.</p>
+<p>To analyze the data we are going to use the <a href="https://pysal.readthedocs.org/en/latest/">pysal</a> analysis library, which is the Python equivalent of the OpenGeoda software.</p>
+<p>As you know, <a href="http://en.wikipedia.org/wiki/Moran%27s_I">Moran's Index</a> measures the spatial autocorrelation of spatial distributions. Let's use this measure to analyze the results of the model, let's start with random diffusion:</p>
 
 </div>
 </div>
