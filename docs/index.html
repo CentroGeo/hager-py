@@ -38,6 +38,33 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Spatial-Diffusion">Spatial Diffusion<a class="anchor-link" href="#Spatial-Diffusion"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this workshop we are going to work with a Python implementation of the <a href="http://en.wikipedia.org/wiki/Torsten_H%C3%A4gerstrand">Torsten Hägerstrand</a> spatial diffusion model. This model is a <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> simulation of the innovation diffusion process originally conceived by Hagerstrand in 1953. For this workshop we are going to work with the simplest version of the model, the basic assumptions are the following:</p>
+<ol>
+<li>Just one person has the message at the beginning</li>
+<li>Innovation is adopted as soon as it is contacted</li>
+<li>The message is only communicated in face-to-face meetings</li>
+<li>The message is transmitted in discrete intervals in which all the adopters transmit the message to another person.</li>
+<li>Space is homogeneous and isotropic</li>
+</ol>
+<p>In essence, what we do is consider geographic space as a grid in which each element has the same number of inhabitants. From here, the probability that an inhabitant of a grid contacts another inhabitant is a function of distance only.</p>
+<p>The Monte Carlo simulation occurs in two stages, for each carrier of the message:</p>
+<ol>
+<li>The cell which transmits the message is randomly selected (according to a probability function that decays with distance).</li>
+<li>Another number is selected randomly to choose the inhabitant of the cell that receives the message. If this inhabitant is also the bearer of innovation, it remains unaltered.</li>
+</ol>
+<p>We are now going to work a bit with the implementation of the Hagerstrand model that is in this same folder.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Install">Install<a class="anchor-link" href="#Install"> </a></h2>
 </div>
 </div>
@@ -90,6 +117,22 @@ nb_path: "index.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>finished
+There are 175693 adopters out of a total of 200000 inhabitants
+The total number of iterations performed is: 20
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
