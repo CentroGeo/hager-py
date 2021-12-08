@@ -54,9 +54,9 @@ nb_path: "00_hagerstrand.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Diffusion" class="doc_header"><code>class</code> <code>Diffusion</code><a href="https://github.CentroGeo.com/hager_py/hager_py/tree/main/hager_py/hagerstrand.py#L15" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Diffusion</code>(<strong><code>mif_size</code></strong>=<em><code>5</code></em>, <strong><code>pob</code></strong>=<em><code>20</code></em>, <strong><code>initial_diff</code></strong>=<em><code>[(50, 50)]</code></em>, <strong><code>p0</code></strong>=<em><code>0.3</code></em>, <strong><code>max_iter</code></strong>=<em><code>15</code></em>)</p>
+<h2 id="Diffusion" class="doc_header"><code>class</code> <code>Diffusion</code><a href="https://github.com/CentroGeo/hager_py/tree/master/hager_py/hagerstrand.py#L15" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Diffusion</code>(<strong><code>mif_size</code></strong>=<em><code>5</code></em>, <strong><code>pob</code></strong>=<em><code>20</code></em>, <strong><code>initial_diff</code></strong>=<em><code>[(50, 50)]</code></em>, <strong><code>p0</code></strong>=<em><code>0.3</code></em>, <strong><code>max_iter</code></strong>=<em><code>15</code></em>)</p>
 </blockquote>
-<p>Clase general para tdodos los tipos de difusión.</p>
+<p>General class for all types of diffusion</p>
 
 </div>
 
@@ -93,33 +93,29 @@ nb_path: "00_hagerstrand.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="SimpleDiffusion" class="doc_header"><code>class</code> <code>SimpleDiffusion</code><a href="https://github.CentroGeo.com/hager_py/hager_py/tree/main/hager_py/hagerstrand.py#L79" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SimpleDiffusion</code>(<strong><code>N</code></strong>=<em><code>100</code></em>, <strong><code>M</code></strong>=<em><code>100</code></em>, <strong><code>mif_size</code></strong>=<em><code>5</code></em>, <strong><code>pob</code></strong>=<em><code>20</code></em>, <strong><code>initial_diff</code></strong>=<em><code>[(50, 50)]</code></em>, <strong><code>p0</code></strong>=<em><code>0.3</code></em>, <strong><code>max_iter</code></strong>=<em><code>15</code></em>) :: <a href="/hager_py/hager_py/hagerstrand.html#Diffusion"><code>Diffusion</code></a></p>
+<h2 id="SimpleDiffusion" class="doc_header"><code>class</code> <code>SimpleDiffusion</code><a href="https://github.com/CentroGeo/hager_py/tree/master/hager_py/hagerstrand.py#L79" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SimpleDiffusion</code>(<strong><code>N</code></strong>=<em><code>100</code></em>, <strong><code>M</code></strong>=<em><code>100</code></em>, <strong><code>mif_size</code></strong>=<em><code>5</code></em>, <strong><code>pob</code></strong>=<em><code>20</code></em>, <strong><code>initial_diff</code></strong>=<em><code>[(50, 50)]</code></em>, <strong><code>p0</code></strong>=<em><code>0.3</code></em>, <strong><code>max_iter</code></strong>=<em><code>15</code></em>) :: <a href="/hager_py/hagerstrand.html#Diffusion"><code>Diffusion</code></a></p>
 </blockquote>
-<p>Modelo simple de difusión espacial basado en Hägerstrand.
-1.- Espacio homogeneo e isotrópico
-2.- Un sólo difusor inicial
-3.- ....otras suposiciones...
-:param N: int Número de renglones en el espacio de simulación
-:param M: int Número de columnas en el espacio de simulación
-:param mif_size: int Tamaño de la matriz (cuadrada) del MIF (debe ser non)
-:param pob: int población en cada celda
-:param initial_diff: [(int,int)] Lista de coordenadas de los difusores
-                                 iniciales
-:param p0: float Probabilidad de auto-difusión
-:param max_iter: int Máximo número de iteraciones
-:attribute space: np.array(M,N,dtype=np.int8) El espacio disponible
-:attribute _pop_array: np.array(M*N,pob,dtype=np.bool) array de habitantes
-                       en cada celda
-:attribute _infected_pop: list (space_idx,int) Lista de los índices de las
-                            celdas adoptantes. La primera entrada es el
-                            índice aplanado de la celda en la matriz space y
-                            la segunda es el número del poblador en
-                            pop_array. Es decir, la lista de las direcciones
-                            de cada poblador infectado.
-:attribute results: np.array((M,N,max_iter)) Guarda los resultados de cada
-                    iteración.
-:attribute time_series: list int Propagaciones por cada iteración
-:attribute _clean: bool Indica si tenemos resultados guardados.</p>
+<p>Simple model of spatial diffusion based on Hägerstrand.
+1.- Homogeneous and isotropic space
+2.- A single initial diffuser
+3.- ....other assumptions...
+:param N: int Number of rows in simulation space.
+:param M: int Number of columns in simulation space.
+:param mif_size: int MIF matrix (square) size (must be non).
+:param pob: int population in each cell.
+:param initial_diff: [(int,int)] Coordinate list of start diffusers.
+:param p0: float Probability of self-diffusion.
+:param max_iter: int Maximum number of iterations.
+:attribute space: np.array(M,N,dtype=np.int8) Available space.
+:attribute _pop_array: np.array(M*N,pob,dtype=np.bool) array of population in each cell
+:attribute _infected_pop: list (space_idx,int) List of the adopting cell indices.
+                                            The first entry is the flattened index of the cell
+                                            in the space array and the second is the number of
+                                            the settler in pop_array. That is, the list of addresses
+                                            of each infected resident.
+:attribute results: np.array((M,N,max_iter)) Save the results of each iteration.
+:attribute time_series: list int Propagations for each iteration.
+:attribute _clean: bool Indicates if we have saved results.</p>
 
 </div>
 
@@ -160,8 +156,12 @@ nb_path: "00_hagerstrand.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/plablo/miniconda3/envs/hager_py/lib/python3.7/site-packages/ipykernel_launcher.py:40: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
+<pre>/tmp/ipykernel_3806098/88500435.py:36: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  dtype=np.bool)
+/tmp/ipykernel_3806098/1567949001.py:54: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  dtype=np.bool)
 </pre>
 </div>
 </div>
@@ -169,21 +169,12 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>acabé
-Hay 10392 adoptantes de un total de 50000 habitantes
-El total de iteraciones realizadas es 15
-acabé
-Hay 21639 adoptantes de un total de 50000 habitantes
-El total de iteraciones realizadas es 15
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/plablo/miniconda3/envs/hager_py/lib/python3.7/site-packages/ipykernel_launcher.py:54: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
-Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+<pre>finished
+There are 8575 adopters out of a total of 50000 inhabitants
+The total number of iterations performed is: 15
+finished
+There are 21572 adopters out of a total of 50000 inhabitants
+The total number of iterations performed is: 15
 </pre>
 </div>
 </div>
@@ -212,34 +203,29 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="AdvancedDiffusion" class="doc_header"><code>class</code> <code>AdvancedDiffusion</code><a href="https://github.CentroGeo.com/hager_py/hager_py/tree/main/hager_py/hagerstrand.py#L309" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>AdvancedDiffusion</code>(<strong><code>N</code></strong>=<em><code>100</code></em>, <strong><code>mif_size</code></strong>=<em><code>5</code></em>, <strong><code>pob</code></strong>=<em><code>20</code></em>, <strong><code>initial_diff</code></strong>=<em><code>[(50, 50)]</code></em>, <strong><code>p0</code></strong>=<em><code>0.3</code></em>, <strong><code>max_iter</code></strong>=<em><code>25</code></em>, <strong><code>densidad</code></strong>=<em><code>20</code></em>, <strong><code>amplitud</code></strong>=<em><code>4.0</code></em>) :: <a href="/hager_py/hager_py/hagerstrand.html#Diffusion"><code>Diffusion</code></a></p>
+<h2 id="AdvancedDiffusion" class="doc_header"><code>class</code> <code>AdvancedDiffusion</code><a href="https://github.com/CentroGeo/hager_py/tree/master/hager_py/hagerstrand.py#L302" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>AdvancedDiffusion</code>(<strong><code>N</code></strong>=<em><code>100</code></em>, <strong><code>mif_size</code></strong>=<em><code>5</code></em>, <strong><code>pob</code></strong>=<em><code>20</code></em>, <strong><code>initial_diff</code></strong>=<em><code>[(50, 50)]</code></em>, <strong><code>p0</code></strong>=<em><code>0.3</code></em>, <strong><code>max_iter</code></strong>=<em><code>25</code></em>, <strong><code>density</code></strong>=<em><code>20</code></em>, <strong><code>amplitud</code></strong>=<em><code>4.0</code></em>) :: <a href="/hager_py/hagerstrand.html#Diffusion"><code>Diffusion</code></a></p>
 </blockquote>
-<p>Modelo de difusión espacial basado en Hägerstrand, con espacio heterogéneo.
-1.- Espacio isotrópico
-2.- Un sólo difusor inicial
-3.- ....otras suposiciones...
-:param N: int Número de renglones y columnas en el espacio de simulación
-:param mif_size: int Tamaño de la matriz (cuadrada) del MIF (debe ser non)
-:param pob: int población máxima en cada celda
-:param densidad: int Cantidad de núcleos iniciales de población.
-:param amplitud: float Amplitud del filtro gaussiano para difuminar la población.
-:param initial_diff: [(int,int)] Lista de coordenadas de los difusores
-                                 iniciales
-:param p0: float Probabilidad de auto-difusión
-:param max_iter: int Máximo número de iteraciones
-:attribute space: np.array(N,N,dtype=np.int8) El espacio disponible
-:attribute _pop_array: np.array(N*N,pob,dtype=np.bool) array de habitantes
-                       en cada celda
-:attribute _infected_pop: list (space_idx,int) Lista de los índices de las
-                            celdas adoptantes. La primera entrada es el
-                            índice aplanado de la celda en la matriz space y
-                            la segunda es el número del poblador en
-                            pop_array. Es decir, la lista de las direcciones
-                            de cada poblador infectado.
-:attribute results: np.array((N,N,max_iter)) Guarda los resultados de cada
-                    iteración.
-:attribute time_series: list int Propagaciones por cada iteración
-:attribute _clean: bool Indica si tenemos resultados guardados.</p>
+<p>Hägerstrand-based spatial diffusion model, with heterogeneous space.
+1.- Isotropic space
+2.- A single initial diffuser
+3.- .... Other assumptions ...
+:param N: int Number of rows and columns in the simulation space.
+:param mif_size: int MIF matrix size (square) (must be odd).
+:param pob: int maximum population at each cell.
+:param density: int Number of Number of initial population nuclei.
+:param amplitud: float Gaussian filter width to blur the population.
+:param initial_diff: [(int,int)] Coordinate list of start diffusers
+:param p0: float Auto-difussion probability
+:param max_iter: int Maximum number of iterations
+:attribute space: np.array(N,N,dtype=np.int8) Available space
+:attribute _pop_array: np.array(N*N,pob,dtype=np.bool) array of inhabitants in each cell
+:attribute _infected_pop: list (space_idx,int) List of adoptive cell indices.
+                            The first entry is the flattened index of the cell in the space matrix
+                            and the second is the number of the settler in pop_array. That is,
+                            the list of addresses of each infected resident.
+:attribute results: np.array((N,N,max_iter)) Save results of each iteration.
+:attribute time_series: list int Propagation of each iteration.
+:attribute _clean: bool Indicates if Indicates if there are saved results.</p>
 
 </div>
 
@@ -279,10 +265,12 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/plablo/miniconda3/envs/hager_py/lib/python3.7/site-packages/ipykernel_launcher.py:40: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+<pre>/tmp/ipykernel_3806098/1748090621.py:35: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
-/home/plablo/miniconda3/envs/hager_py/lib/python3.7/site-packages/ipykernel_launcher.py:46: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
+  self.space[(points[0]).astype(np.int), (points[1]).astype(np.int)] = 1
+/tmp/ipykernel_3806098/1748090621.py:41: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
 Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  dtype=np.bool)
 </pre>
 </div>
 </div>
@@ -290,9 +278,9 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>acabé
-Hay 22513 adoptantes de un total de 250000 habitantes
-El total de iteraciones realizadas es 25
+<pre>Done
+There are 26823 adoptants from a total of 250000 inhabitants
+The total number of iterations performed is 25
 </pre>
 </div>
 </div>
