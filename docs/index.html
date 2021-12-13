@@ -1,6 +1,6 @@
 ---
 
-title: Hager python
+title: Hager python 
 
 
 keywords: fastai
@@ -38,28 +38,27 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Difusi&#243;n-espacial">Difusi&#243;n espacial<a class="anchor-link" href="#Difusi&#243;n-espacial"> </a></h2>
+<h2 id="Spatial-Diffusion">Spatial Diffusion<a class="anchor-link" href="#Spatial-Diffusion"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>En este taller vamos a trabajar con una implementación en Python del modelo de difusión espacial de <a href="http://en.wikipedia.org/wiki/Torsten_H%C3%A4gerstrand">Torsten Hägerstrand</a>. Este modelo es una simulación tipo <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> del proceso de difusión de innovaciones concebido originalmente por Hagerstrand en 1953.
-Para este taller vamos a trabajar con la versión más simple del modelo, las suposiciones básicas son las siguientes:</p>
+<p>In this workshop we are going to work with a Python implementation of the <a href="http://en.wikipedia.org/wiki/Torsten_H%C3%A4gerstrand">Torsten Hägerstrand</a> spatial diffusion model. This model is a <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> simulation of the innovation diffusion process originally conceived by Hagerstrand in 1953. For this workshop we are going to work with the simplest version of the model, the basic assumptions are the following:</p>
 <ol>
-<li>Una sola persona tiene el <em>mensaje</em> al principio</li>
-<li>La innovación es adoptada en cuanto se tiene contacto con ella</li>
-<li>El mensaje se comunica <em>unicamente</em> en encuentros cara a cara</li>
-<li>El mensaje se transmite en intervalos discretos en los que <strong>todos</strong> los adoptantes transmiten el mensaje a otra persona.</li>
-<li>El espacio es homogeneo e isotrópico</li>
+<li>Just one person has the message at the beginning</li>
+<li>Innovation is adopted as soon as it is contacted</li>
+<li>The message is only communicated in face-to-face meetings</li>
+<li>The message is transmitted in discrete intervals in which all the adopters transmit the message to another person.</li>
+<li>Space is homogeneous and isotropic</li>
 </ol>
-<p>En escencia, lo que hacemos es considerar al espacio <em>geográfico</em> como una retícula en la que cada elemento tiene el mismo número de habitantes. A partir de aquí, la probabilidad de que un habitante de una retícula contacte a otro habitante es función únicamente de la distancia.</p>
-<p>La simulación Monte Carlo ocurre en dos etapas, para cada portador del mensaje:</p>
+<p>In essence, what we do is consider geographic space as a grid in which each element has the same number of inhabitants. From here, the probability that an inhabitant of a grid contacts another inhabitant is a function of distance only.</p>
+<p>The Monte Carlo simulation occurs in two stages, for each carrier of the message:</p>
 <ol>
-<li>Se selecciona al azar (de acuerdo a una función de probabilidad que decae con la distancia) la celda a la cual se transmite el mensaje.</li>
-<li>Se selecciona otro número al azar para elegir el habitante de la celda que recibe el mensaje. Si este habitante es también portador de la innovación, queda inalterado.</li>
+<li>The cell which transmits the message is randomly selected (according to a probability function that decays with distance).</li>
+<li>Another number is selected randomly to choose the inhabitant of the cell that receives the message. If this inhabitant is also the bearer of innovation, it remains unaltered.</li>
 </ol>
-<p>Vamos ahora a jugar un poco con la implementación del modelo de Hagerstrand que está en esta misma carpeta.</p>
+<p>We are now going to work a bit with the implementation of the Hagerstrand model that is in this same folder.</p>
 
 </div>
 </div>
@@ -72,7 +71,7 @@ Para este taller vamos a trabajar con la versión más simple del modelo, las supo
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>pip install your_project_name</code></p>
+<p><code>pip install git+https://github.com/CentroGeo/hager_py</code></p>
 
 </div>
 </div>
@@ -90,48 +89,6 @@ Para este taller vamos a trabajar con la versión más simple del modelo, las supo
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-analysis">Data analysis<a class="anchor-link" href="#Data-analysis"> </a></h2><p>In this part of the workshop we are going to analyze, using ESDA (Exploratory Spatial Data Analysis) tools, the data generated with the Hagerstrand model. The goal is to begin to understand the relationship between spatial statistics and the processes that give rise to the distributions that we observe.</p>
-<p>To analyze the data we are going to use the <a href="https://pysal.readthedocs.org/en/latest/">pysal</a> analysis library, which is the Python equivalent of the OpenGeoda software.</p>
-<p>As you know, <a href="http://en.wikipedia.org/wiki/Moran%27s_I">Moran's Index</a> measures the spatial autocorrelation of spatial distributions. Let's use this measure to analyze the results of the model, let's start with random diffusion:</p>
-
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>2</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -160,6 +117,22 @@ Para este taller vamos a trabajar con la versión más simple del modelo, las supo
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>finished
+There are 175693 adopters out of a total of 200000 inhabitants
+The total number of iterations performed is: 20
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 

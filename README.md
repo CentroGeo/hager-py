@@ -1,55 +1,36 @@
-# Hager python
+# Hager python 
 
 
 
 ![example workflow](https://github.com/CentroGeo/hager_py/actions/workflows/main.yml/badge.svg)
 
-## Difusión espacial
+## Spatial Diffusion
 
-En este taller vamos a trabajar con una implementación en Python del modelo de difusión espacial de [Torsten Hägerstrand](http://en.wikipedia.org/wiki/Torsten_H%C3%A4gerstrand). Este modelo es una simulación tipo [Monte Carlo](http://en.wikipedia.org/wiki/Monte_Carlo_method) del proceso de difusión de innovaciones concebido originalmente por Hagerstrand en 1953.
-Para este taller vamos a trabajar con la versión más simple del modelo, las suposiciones básicas son las siguientes:
 
-1. Una sola persona tiene el *mensaje* al principio
-2. La innovación es adoptada en cuanto se tiene contacto con ella
-3. El mensaje se comunica *unicamente* en encuentros cara a cara
-4. El mensaje se transmite en intervalos discretos en los que **todos** los adoptantes transmiten el mensaje a otra persona.
-5. El espacio es homogeneo e isotrópico
+In this workshop we are going to work with a Python implementation of the [Torsten Hägerstrand](http://en.wikipedia.org/wiki/Torsten_H%C3%A4gerstrand) spatial diffusion model. This model is a [Monte Carlo](http://en.wikipedia.org/wiki/Monte_Carlo_method) simulation of the innovation diffusion process originally conceived by Hagerstrand in 1953. For this workshop we are going to work with the simplest version of the model, the basic assumptions are the following:
 
-En escencia, lo que hacemos es considerar al espacio *geográfico* como una retícula en la que cada elemento tiene el mismo número de habitantes. A partir de aquí, la probabilidad de que un habitante de una retícula contacte a otro habitante es función únicamente de la distancia.
+1. Just one person has the message at the beginning
+2. Innovation is adopted as soon as it is contacted
+3. The message is only communicated in face-to-face meetings
+4. The message is transmitted in discrete intervals in which all the adopters transmit the message to another person.
+5. Space is homogeneous and isotropic
 
-La simulación Monte Carlo ocurre en dos etapas, para cada portador del mensaje:
+In essence, what we do is consider geographic space as a grid in which each element has the same number of inhabitants. From here, the probability that an inhabitant of a grid contacts another inhabitant is a function of distance only.
 
-1. Se selecciona al azar (de acuerdo a una función de probabilidad que decae con la distancia) la celda a la cual se transmite el mensaje.
-2. Se selecciona otro número al azar para elegir el habitante de la celda que recibe el mensaje. Si este habitante es también portador de la innovación, queda inalterado.
+The Monte Carlo simulation occurs in two stages, for each carrier of the message:
 
-Vamos ahora a jugar un poco con la implementación del modelo de Hagerstrand que está en esta misma carpeta.
+1. The cell which transmits the message is randomly selected (according to a probability function that decays with distance).
+2. Another number is selected randomly to choose the inhabitant of the cell that receives the message. If this inhabitant is also the bearer of innovation, it remains unaltered.
+
+We are now going to work a bit with the implementation of the Hagerstrand model that is in this same folder.
 
 ## Install
 
-`pip install your_project_name`
+`pip install git+https://github.com/CentroGeo/hager_py`
 
 ## How to use
 
 Fill me in please! Don't forget code examples:
-
-## Data analysis
-
-In this part of the workshop we are going to analyze, using ESDA (Exploratory Spatial Data Analysis) tools, the data generated with the Hagerstrand model. The goal is to begin to understand the relationship between spatial statistics and the processes that give rise to the distributions that we observe.
-
-To analyze the data we are going to use the [pysal](https://pysal.readthedocs.org/en/latest/) analysis library, which is the Python equivalent of the OpenGeoda software.
-
-As you know, [Moran's Index](http://en.wikipedia.org/wiki/Moran%27s_I) measures the spatial autocorrelation of spatial distributions. Let's use this measure to analyze the results of the model, let's start with random diffusion:
-
-```
-1+1
-```
-
-
-
-
-    2
-
-
 
 ```
 s= SimpleDiffusion(100,100,5,20,[(20,20)],0.2,20)
@@ -58,3 +39,8 @@ s= SimpleDiffusion(100,100,5,20,[(20,20)],0.2,20)
 ```
 s.mixed_diffusion(0.7)
 ```
+
+    finished
+    There are 175693 adopters out of a total of 200000 inhabitants
+    The total number of iterations performed is: 20
+    
