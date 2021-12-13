@@ -30,7 +30,15 @@ We are now going to work a bit with the implementation of the Hagerstrand model 
 
 ## How to use
 
-Fill me in please! Don't forget code examples:
+
+## Data analysis
+
+In this part of the workshop we are going to analyze, using ESDA (Exploratory Spatial Data Analysis) tools, the data generated with the Hagerstrand model. The goal is to begin to understand the relationship between spatial statistics and the processes that give rise to the distributions that we observe.
+
+To analyze the data we are going to use the pysal analysis library, which is the Python equivalent of the OpenGeoda software.
+
+As you know, Moran's Index measures the spatial autocorrelation of spatial distributions. Let's use this measure to analyze the results of the model, let's start with random diffusion:
+
 
 ```
 s= SimpleDiffusion(100,100,5,20,[(20,20)],0.2,20)
