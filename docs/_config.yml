@@ -1,7 +1,7 @@
-repository: plablo09/hager-py
+repository: CentroGeo/hager_py
 output: web
-topnav_title: hager-py
-site_title: hager-py
+topnav_title: hager_py
+site_title: hager_py
 company_name: CentroGeo 2021
 description: Python implementation of Hagerstrand innovation diffusion model.
 # Set to false to disable KaTeX math
@@ -58,7 +58,9 @@ defaults:
 
 sidebars:
 - home_sidebar
-#permalink: pretty
 
-theme: jekyll-theme-minimal
+plugins:
+    - jekyll-remote-theme
+    
+remote_theme: fastai/nbdev-jekyll-theme
 baseurl: /hager_py/
